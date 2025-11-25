@@ -1,0 +1,27 @@
+graph TB
+  %% Comprehensive Context Map
+  %% Generated from bounded context analysis
+
+  bc_001["💾 Correspondent Directory Management"]
+  style bc_001 fill:#3498db,stroke:#333,stroke-width:2px,color:#fff
+  bc_002["💾 Settlement Instruction Management"]
+  style bc_002 fill:#3498db,stroke:#333,stroke-width:2px,color:#fff
+  bc_003["💚 Correspondent Relationship Management"]
+  style bc_003 fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
+  bc_004["⚙️ Correspondent Data Gateway"]
+  style bc_004 fill:#95a5a6,stroke:#333,stroke-width:2px,color:#fff
+  bc_005["💚 Audit & Compliance Reporting"]
+  style bc_005 fill:#2ecc71,stroke:#333,stroke-width:2px,color:#fff
+  bc_006["⚙️ Legacy Integration (Anti-Corruption Layer)"]
+  style bc_006 fill:#95a5a6,stroke:#333,stroke-width:2px,color:#fff
+
+  bc_003 ==>|published-language| bc_001
+  bc_001 ==>|published-language| bc_002
+  bc_001 -->|open-host-service| bc_004
+  bc_002 -->|open-host-service| bc_004
+  All_Domain_Contexts ==>|published-language| bc_005
+  All_Domain_Contexts -->|anti-corruption-layer| Legacy_Integration_ACL
+
+  %% Legend
+  legend["Legend:<br/>💾 Memory (Reference Data)<br/>💚 Heart (Lifecycle)<br/>🧠 Brain (Operations)<br/>⚙️ Hybrid/Technical"]
+  style legend fill:#f9f9f9,stroke:#999,stroke-width:1px,color:#333
